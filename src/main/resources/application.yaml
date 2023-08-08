@@ -2,6 +2,11 @@
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/
-    username:
-    password:
+    url: jdbc:mysql://localhost:3306/bootex
+    username: bootuser
+    password: bootuser12!@
+
+  jpa:
+    hibernate.ddl-auto: none
+    show-sql: true
+    properties:hibernate:format_sql: true
