@@ -9,6 +9,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+      # ???? none ??
     show-sql: true
     properties:
       hibernate:
