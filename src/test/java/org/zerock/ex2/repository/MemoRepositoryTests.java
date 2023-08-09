@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.zerock.ex2.entity.Memo;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
@@ -104,5 +105,25 @@ public class MemoRepositoryTests {
         Pageable pageable = PageRequest.of(0, 10, Sort.by("mno").descending());
         Page<Memo> result = memoRepository.findByMnoBetween(50L, 60L, pageable);
         result.stream().forEach(memo -> System.out.println(memo));
+    }
+//    @Test
+//    public void testGestListDesc(){
+//        List<Memo> result = memoRepository.getListDesc(50L);
+//        result.stream().forEach(memo -> System.out.println(memo));
+//    }
+
+//    @Test
+//    public void testUpdateMemoText(){
+//        memoRepository.updateMemoText(98L,"update.....Text");
+//    }
+    @Test
+    public void testNative(){
+        List<Object[]> result = memoRepository.getNativeResult();
+        result.stream().forEach(arr -> {
+            Long mno = (Long)arr[0];
+            String memoText = (String) arr[1];
+            System.out.println(mno);
+            System.out.println(memoText);
+        });
     }
 }
