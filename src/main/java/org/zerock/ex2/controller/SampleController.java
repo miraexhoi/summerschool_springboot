@@ -2,6 +2,12 @@ package org.zerock.ex2.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.zerock.ex2.dto.SampleDTO;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RestController // Rest + Controller , ResponseBody + Controller
 @RequestMapping("/sample") // main route (sample/*)
@@ -40,8 +46,29 @@ public class SampleController {
 
     // localhost:8080/ex05?
     @PostMapping("/ex05")
-    public void ex05(){
-        log.info("..........ex05");
+    public void ex05(
+            @RequestBody SampleDTO dto
+    ) {
+        log.info("..........ex05 : {}", dto);
+    }
+
+
+    @GetMapping("/list")
+    public List<SampleDTO> ex06() {
+//        List<SampleDTO> list = new ArrayList<>();
+//        IntStream.rangeClosed(1,20).forEach(i -> {
+//            SampleDTO dto = SampleDTO.builder()
+//                    .name("Test" + i)
+//                    .age(20+i)
+//                    .build();
+//            list.add(dto);
+//        });
+        List<SampleDTO> list = IntStream.rangeClosed(1,20)
+                .mapToObj(i -> SampleDTO.builder()
+                        .name("Test " + i)
+                        .age(20 + i)
+                        .build()).collect(Collectors.toList());
+        return list;
     }
 
 }
