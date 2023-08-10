@@ -2,13 +2,14 @@ package org.zerock.ex2.repository;
 
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.zerock.ex2.entity.Memo;
 
-import java.awt.print.Pageable;
+
 import java.util.List;
 
 public interface MemoRepository extends JpaRepository<Memo, Long> {
@@ -21,7 +22,7 @@ public interface MemoRepository extends JpaRepository<Memo, Long> {
     @Modifying
     // use jsql grammer
     @Query("update Memo m " +
-            "set m.memoText = :memoText" +
+            " set m.memoText = :memoText" +
             " where m.mno = :mno")
     int updateMemoText(
             @Param("mno") Long mno,
