@@ -106,16 +106,17 @@ public class MemoRepositoryTests {
         Page<Memo> result = memoRepository.findByMnoBetween(50L, 60L, pageable);
         result.stream().forEach(memo -> System.out.println(memo));
     }
-//    @Test
-//    public void testGestListDesc(){
-//        List<Memo> result = memoRepository.getListDesc(50L);
-//        result.stream().forEach(memo -> System.out.println(memo));
-//    }
+    @Test
+    public void testGetListDesc(){
+        List<Memo> result = memoRepository.getListDesc(50L);
+        result.stream().forEach(memo -> System.out.println(memo));
+    }
 
-//    @Test
-//    public void testUpdateMemoText(){
-//        memoRepository.updateMemoText(98L,"update.....Text");
-//    }
+    @Test
+    public void testUpdateMemoText(){
+        memoRepository.updateMemoText(99L,"update.....Text");
+    }
+
     @Test
     public void testNative(){
         List<Object[]> result = memoRepository.getNativeResult();
